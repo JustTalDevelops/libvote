@@ -1,6 +1,7 @@
 package libvote
 
 import (
+	"errors"
 	"fmt"
 	"github.com/corpix/uarand"
 	"io/ioutil"
@@ -8,7 +9,6 @@ import (
 	"net/http/cookiejar"
 	"net/url"
 	"strconv"
-	"errors"
 	"strings"
 	"time"
 )
@@ -51,7 +51,7 @@ func (c *Client) Vote(serverKey int, username string, code string) (bool, error)
 		return false, err
 	}
 	req.Header.Set("Origin", BaseUrl)
-	req.Header.Set("Referer", "https://minecraftpocket-servers.com/server/" + strconv.Itoa(serverKey) + "/vote/")
+	req.Header.Set("Referer", "https://minecraftpocket-servers.com/server/"+strconv.Itoa(serverKey)+"/vote/")
 	req.Header.Set("User-Agent", uarand.GetRandom())
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	c.Jar, err = NewJar()
