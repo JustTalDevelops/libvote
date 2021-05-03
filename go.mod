@@ -1,4 +1,4 @@
-module github.com/jviguy/libvote
+module github.com/JustTalDevelops/libvote
 
 go 1.14
 
